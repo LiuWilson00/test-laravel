@@ -41,7 +41,7 @@ jobs:
         username: ec2-user
         key: ${{ env.EC2_SSH_KEY }}
         script: |
-          docker pull ${{ env.DH_USERNAME }}/test-laravelapp:${{ github.event.inputs.version }
+          docker pull ${{ env.DH_USERNAME }}/test-laravelapp:${{ github.event.inputs.version }}
           docker stop ${{ env.CONTAINER_NAME }} || true
           docker rm ${{ env.CONTAINER_NAME }} || true
           docker run -d --name ${{ env.CONTAINER_NAME }} -p 8080:80 ${{ env.DH_USERNAME }}/test-laravelapp:${{ github.event.inputs.version }}
