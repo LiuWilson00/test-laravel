@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# 啟動 PHP-FPM
+php-fpm &
+
+# 啟動 Nginx
+nginx -g 'daemon off;' 
