@@ -20,4 +20,4 @@ jobs:
         script: |
           echo hello
           echo world
-          echo ${{ CONTAINER_NAME }}
+          echo ${{ env.CONTAINER_NAME }}
