@@ -35,6 +35,7 @@ RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 # 安裝 Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install
+RUN php artisan key:generate
 
 # 開放端口
 EXPOSE 80 9000
