@@ -1,12 +1,6 @@
 name: Test Pipeline
 
-on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version'
-        required: true
-        default: 'latest'
+on: workflow_dispatch
 env:
   DH_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   DH_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -15,7 +9,9 @@ env:
   CONTAINER_NAME: laravel-app-run
 jobs:
   test:
-    - name: Deploy to EC2
+    runs-on: ubuntu-latest
+    steps:
+    - name: EC2 Test
       uses: appleboy/ssh-action@master
       with:
         host: ${{ env.EC2_HOST }}
@@ -24,3 +20,4 @@ jobs:
         script: |
           echo hello
           echo world
+          echo ${{ CONTAINER_NAME }}
